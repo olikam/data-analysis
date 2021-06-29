@@ -1,5 +1,6 @@
 package com.dataanalysis.util;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 
@@ -13,9 +14,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@UtilityClass
 public class CSVReader {
 
-    public static List<EventlogRow> readFile(String fileName) {
+    public List<EventlogRow> readFile(String fileName) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS").withZone(ZoneId.of("UTC"));
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(CSVReader.class.getClassLoader().getResource(fileName).getFile()))) {
             try (CSVParser csvParser = new CSVParser(reader, CSVFormat.newFormat(';').withFirstRecordAsHeader())) {

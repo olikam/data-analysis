@@ -4,6 +4,7 @@ import com.dataanalysis.model.CaseAnalysis;
 import com.dataanalysis.model.Variant;
 import com.dataanalysis.util.EventlogRow;
 import com.dataanalysis.util.JsonConverter;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -13,13 +14,10 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class CaseAggregationService {
 
     private final List<EventlogRow> eventlogRows;
-
-    public CaseAggregationService(List<EventlogRow> eventlogRows) {
-        this.eventlogRows = eventlogRows;
-    }
 
     /**
      * @return JSON String representing {@link CaseAnalysis} object.
